@@ -37,29 +37,20 @@ ob_start();
                 $a_image = get_the_post_thumbnail_url( $a_id, 'medium' ) ?: get_template_directory_uri() . '/assets/demo/demo_relief.jpg';
                 $a_excerpt = get_the_excerpt() ?: __( 'Faaliyet detayları ve çalışma raporları çok yakında eklenecektir.', 'dernek-tema' );
                 
-                // Output card footer with date and read more button
+                // Output card footer with a large button
                 ob_start();
-                ?>
-                <div class="flex justify-between items-center text-xs font-sans mt-component-xs w-full">
-                    <span class="text-text-muted flex items-center gap-1">
-                        <i class="ri-calendar-line text-primary"></i>
-                        <?php echo get_the_date(); ?>
-                    </span>
-                    <?php
-                    get_template_part( 'resources/components/button', null, [
-                        'variant' => 'primary',
-                        'size' => 'small',
-                        'text' => 'Faaliyeti İncele',
-                        'url' => $a_url
-                    ] );
-                    ?>
-                </div>
-                <?php
+                get_template_part( 'resources/components/button', null, [
+                    'variant' => 'primary',
+                    'size'    => 'large',
+                    'text'    => __( 'Faaliyeti İncele', 'dernek-tema' ),
+                    'url'     => $a_url,
+                    'class'   => 'w-full justify-center text-center flex'
+                ] );
                 $card_footer = ob_get_clean();
 
                 get_template_part( 'resources/components/card', null, [
                     'title' => $a_title,
-                    'subtitle' => __( 'Saha Raporu', 'dernek-tema' ),
+                    'subtitle' => '',
                     'image_url' => $a_image,
                     'content' => '<p>' . esc_html( $a_excerpt ) . '</p>',
                     'footer' => $card_footer,
