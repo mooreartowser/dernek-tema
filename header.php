@@ -366,27 +366,46 @@ document.addEventListener('DOMContentLoaded', function() {
                     <p class="text-[10px] text-text-muted mt-1.5 leading-relaxed"><?php esc_html_e( 'Üyeliğiniz yoksa giriş yaptığınızda otomatik oluşturulacaktır.', 'dernek-tema' ); ?></p>
                 </div>
                 
-                <button type="submit" class="w-full bg-primary hover:bg-primary-hover text-white text-sm font-bold py-3.5 rounded-medium shadow-sm transition-all duration-200 flex items-center justify-center gap-2 cursor-pointer">
-                    <span><?php esc_html_e( 'Doğrulama Kodu Gönder', 'dernek-tema' ); ?></span>
-                    <i class="ri-arrow-right-line"></i>
-                </button>
+                <?php
+                get_template_part( 'resources/components/button', null, [
+                    'type'       => 'submit',
+                    'variant'    => 'primary',
+                    'class'      => 'w-full gap-2 justify-center flex items-center cursor-pointer shadow-sm py-3.5',
+                    'text'       => '<span>' . esc_html__( 'Doğrulama Kodu Gönder', 'dernek-tema' ) . '</span> <i class="ri-arrow-right-line"></i>',
+                    'escape'     => false,
+                ] );
+                ?>
             </form>
 
             <!-- Step 2: Verify OTP Form (hidden by default) -->
             <form id="otp-verify-form" class="space-y-4 hidden" autocomplete="off">
                 <div class="space-y-1 text-center">
                     <label for="login-otp" class="block text-xs font-bold text-secondary mb-2"><?php esc_html_e( 'Doğrulama Kodu (SMS)', 'dernek-tema' ); ?></label>
-                    <input type="text" id="login-otp" required placeholder="123456" maxlength="6" pattern="[0-9]{6}" class="block w-full max-w-[180px] mx-auto text-center tracking-[0.5em] font-black text-lg py-3 rounded-medium border border-border focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none bg-surface-alt/20 font-sans text-secondary" />
+                    <?php
+                    get_template_part( 'resources/components/input', null, [
+                        'type'        => 'text',
+                        'id'          => 'login-otp',
+                        'required'    => true,
+                        'placeholder' => '123456',
+                        'input_class' => 'max-w-[180px] mx-auto text-center tracking-[0.5em] font-black text-lg py-3 bg-surface-alt/20 text-secondary',
+                        'attributes'  => 'maxlength="6" pattern="[0-9]{6}"',
+                    ] );
+                    ?>
                     <p id="otp-timer-text" class="text-[10px] text-text-muted mt-2">
                         <?php esc_html_e( 'Kalan Süre: ', 'dernek-tema' ); ?><span id="otp-timer" class="font-bold text-primary">120</span> <?php esc_html_e( 'sn', 'dernek-tema' ); ?>
                     </p>
                 </div>
 
                 <div class="space-y-2 pt-2">
-                    <button type="submit" class="w-full bg-primary hover:bg-primary-hover text-white text-sm font-bold py-3.5 rounded-medium shadow-sm transition-all duration-200 flex items-center justify-center gap-2 cursor-pointer">
-                        <i class="ri-checkbox-circle-line"></i>
-                        <span><?php esc_html_e( 'Girişi Tamamla', 'dernek-tema' ); ?></span>
-                    </button>
+                    <?php
+                    get_template_part( 'resources/components/button', null, [
+                        'type'       => 'submit',
+                        'variant'    => 'primary',
+                        'class'      => 'w-full gap-2 justify-center flex items-center cursor-pointer shadow-sm py-3.5',
+                        'text'       => '<i class="ri-checkbox-circle-line"></i> <span>' . esc_html__( 'Girişi Tamamla', 'dernek-tema' ) . '</span>',
+                        'escape'     => false,
+                    ] );
+                    ?>
                     <?php
                     get_template_part( 'resources/components/button', null, [
                         'variant'    => 'outline',

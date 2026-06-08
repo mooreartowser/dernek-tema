@@ -20,6 +20,7 @@ $disabled    = ! empty( $args['disabled'] ) ? 'disabled' : '';
 $error       = $args['error'] ?? '';
 $class       = $args['class'] ?? '';
 $input_class = $args['input_class'] ?? '';
+$attributes  = $args['attributes'] ?? '';
 
 $input_classes = 'w-full px-component-sm py-component-sm border rounded-medium text-text bg-surface-alt font-sans placeholder-text-muted transition-all duration-200 focus:outline-none focus:bg-surface focus:ring-2 focus:ring-primary focus:border-transparent resize-y ' . $input_class;
 
@@ -52,6 +53,7 @@ if ( $disabled ) {
         class="<?php echo esc_attr( $input_classes ); ?>" 
         <?php echo $required; ?> 
         <?php echo $disabled; ?>
+        <?php echo $attributes; ?>
     ><?php echo esc_textarea( $value ); ?></textarea>
 
     <?php if ( ! empty( $error ) ) : ?>

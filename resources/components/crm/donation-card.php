@@ -118,15 +118,18 @@ $form_id = 'donation_form_' . uniqid();
                 </div>
             <?php endif; ?>
 
-            <!-- 5. Amount Input / Price Pill Container (Kept raw as an inline amount field design exception) -->
+            <!-- 5. Amount Input / Price Pill Container -->
             <input type="hidden" name="unit_amount" class="unit-amount-hidden" value="<?php echo esc_attr( $is_variable ? '250' : $active_price ); ?>">
             <div class="w-full relative rounded-medium border border-border/65 bg-surface-alt/10 py-2 px-4 flex items-center justify-center h-10 font-sans">
-                <input type="<?php echo $is_variable ? 'number' : 'text'; ?>" 
-                       name="amount" 
-                       value="<?php echo $is_variable ? '250' : number_format( $active_price, 0, ',', '.' ); ?>" 
-                       min="20"
-                       <?php echo $is_variable ? '' : 'readonly'; ?>
-                       class="price-input text-center font-black text-sm text-secondary bg-transparent border-0 p-0 focus:outline-none focus:ring-0 w-24 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none" />
+                <?php get_template_part( 'resources/components/input', null, [
+                    'type'        => $is_variable ? 'number' : 'text',
+                    'name'        => 'amount',
+                    'id'          => 'amount_' . $form_id,
+                    'value'       => $is_variable ? '250' : number_format( $active_price, 0, ',', '.' ),
+                    'input_class' => '!border-0 !bg-transparent !p-0 !ring-0 price-input text-center font-black text-sm text-secondary focus:outline-none focus:ring-0 w-24 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none',
+                    'class'       => '!w-auto !flex-row !gap-0 !bg-transparent !border-0',
+                    'attributes'  => 'min="20"' . ( $is_variable ? '' : ' readonly' )
+                ] ); ?>
                 <span class="price-suffix ml-1 font-bold text-xs text-text-muted">₺</span>
             </div>
 
@@ -140,12 +143,15 @@ $form_id = 'donation_form_' . uniqid();
 
     </div>
 
-    <!-- 7. Sepete Ekle Button (Styled using btn classes) -->
+    <!-- 7. Sepete Ekle Button (Styled using button component) -->
     <div class="px-5 pb-5 pt-0">
-        <button type="submit" class="btn btn-primary w-full gap-2">
-            <i class="ri-shopping-basket-2-line"></i>
-            <?php esc_html_e( 'Sepete Ekle', 'dernek-tema' ); ?>
-        </button>
+        <?php get_template_part( 'resources/components/button', null, [
+            'type'       => 'submit',
+            'variant'    => 'primary',
+            'class'      => 'w-full gap-2 justify-center flex items-center',
+            'text'       => '<i class="ri-shopping-basket-2-line"></i> ' . esc_html__( 'Sepete Ekle', 'dernek-tema' ),
+            'escape'     => false,
+        ] ); ?>
     </div>
 
     <?php

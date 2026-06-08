@@ -18,6 +18,8 @@ $class      = $args['class'] ?? '';
 $attributes = $args['attributes'] ?? '';
 $disabled   = ! empty( $args['disabled'] ) ? 'disabled' : '';
 
+$escape     = $args['escape'] ?? true;
+
 $size_classes = [
     'small'  => 'btn-sm',
     'medium' => 'btn-md',
@@ -43,10 +45,10 @@ $classes = implode( ' ', array_filter( [
 
 <?php if ( ! empty( $url ) ) : ?>
     <a href="<?php echo esc_url( $url ); ?>" class="<?php echo esc_attr( $classes ); ?>" <?php echo $attributes; ?>>
-        <?php echo esc_html( $text ); ?>
+        <?php echo $escape ? esc_html( $text ) : $text; ?>
     </a>
 <?php else : ?>
     <button type="<?php echo esc_attr( $type ); ?>" class="<?php echo esc_attr( $classes ); ?>" <?php echo $disabled; ?> <?php echo $attributes; ?>>
-        <?php echo esc_html( $text ); ?>
+        <?php echo $escape ? esc_html( $text ) : $text; ?>
     </button>
 <?php endif; ?>

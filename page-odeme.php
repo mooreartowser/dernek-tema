@@ -443,11 +443,17 @@ ob_start();
                     </div>
                 </div>
 
-                <!-- Action Submit Button (Kept raw due to inner HTML icon escaping limitation in button.php) -->
-                <button type="button" id="submit-checkout-btn" class="w-full bg-primary hover:bg-primary-hover text-white text-base font-bold py-3.5 rounded-medium shadow-sm transition-all duration-200 flex items-center justify-center gap-2 mt-2 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2">
-                    <i class="ri-lock-fill"></i>
-                    <?php esc_html_e( 'Güvenli Bağış Yap', 'dernek-tema' ); ?>
-                </button>
+                <!-- Action Submit Button -->
+                <?php
+                get_template_part( 'resources/components/button', null, [
+                    'type'       => 'button',
+                    'variant'    => 'primary',
+                    'class'      => 'w-full gap-2 justify-center flex items-center shadow-sm py-3.5 mt-2 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 cursor-pointer',
+                    'text'       => '<i class="ri-lock-fill"></i> ' . esc_html__( 'Güvenli Bağış Yap', 'dernek-tema' ),
+                    'attributes' => 'id="submit-checkout-btn"',
+                    'escape'     => false,
+                ] );
+                ?>
 
                 <div class="flex flex-col gap-3 items-center text-center text-[10px] text-text-muted mt-2 border-t border-border/40 pt-4">
                     <div class="flex items-center gap-1 text-primary font-bold">

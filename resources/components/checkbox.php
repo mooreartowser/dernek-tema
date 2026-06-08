@@ -15,8 +15,9 @@ $value    = $args['value'] ?? '1';
 $checked  = ! empty( $args['checked'] ) ? 'checked' : '';
 $label    = $args['label'] ?? '';
 $required = ! empty( $args['required'] ) ? 'required' : '';
-$disabled = ! empty( $args['disabled'] ) ? 'disabled' : '';
-$class    = $args['class'] ?? '';
+$disabled   = ! empty( $args['disabled'] ) ? 'disabled' : '';
+$class      = $args['class'] ?? '';
+$attributes = $args['attributes'] ?? '';
 
 $checkbox_classes = 'h-4 w-4 rounded-small border-border text-primary focus:ring-primary bg-surface-alt transition-all duration-200';
 
@@ -38,6 +39,7 @@ if ( $disabled ) {
             <?php echo $checked; ?> 
             <?php echo $required; ?> 
             <?php echo $disabled; ?>
+            <?php echo $attributes; ?>
         />
     </div>
     <?php if ( ! empty( $label ) ) : ?>
