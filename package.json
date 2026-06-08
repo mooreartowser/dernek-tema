@@ -1,0 +1,14 @@
+{
+  "name": "dernek-tema",
+  "version": "1.0.0",
+  "description": "Dernek Framework WordPress Theme Build Pipeline",
+  "main": "index.php",
+  "scripts": {
+    "dev": "node -e \"require('fs').mkdirSync('assets/js', {recursive: true}); require('fs').copyFileSync('resources/js/app.js', 'assets/js/app.js')\" && npx @tailwindcss/cli -i resources/css/app.css -o assets/css/app.css --watch",
+    "build": "node -e \"require('fs').mkdirSync('assets/js', {recursive: true}); require('fs').copyFileSync('resources/js/app.js', 'assets/js/app.js')\" && npx @tailwindcss/cli -i resources/css/app.css -o assets/css/app.css --minify"
+  },
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.0.0",
+    "tailwindcss": "^4.0.0"
+  }
+}

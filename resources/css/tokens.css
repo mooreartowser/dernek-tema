@@ -1,0 +1,121 @@
+/* Design tokens and theme overrides for Tailwind CSS v4 - 7 Kita Dernegi */
+@theme {
+  /* ==========================================
+     1. COLORS (Brand & Interactive States)
+     ========================================== */
+  --color-primary: #1e8f55;                       /* Brand Primary: Humanitarian Green */
+  --color-primary-hover: #167342;                 /* Primary Hover: Darker Green */
+  --color-secondary: #2a4e96;                     /* Brand Secondary: Deep Navy */
+  --color-secondary-hover: #1e3a7a;               /* Secondary Hover: Darker Navy */
+  --color-accent: #f49d1a;                        /* Accent: Warm Orange for CTA */
+  --color-accent-hover: #d97e0a;                  /* Accent Hover: Darker Orange */
+  --color-success: #1e8f55;                       /* Success State: Clean Green */
+  --color-warning: #fbba49;                       /* Warning State: Golden Yellow */
+  --color-danger: #b56308;                        /* Danger State: Amber Red */
+  --color-navy-dark: #081433;                     /* Dark background sections */
+  --color-navy-deep: #0e1f4a;                     /* Deep dark background */
+
+  /* ==========================================
+     2. NEUTRAL COLORS (Backgrounds, Borders & Text)
+     ========================================== */
+  --color-background: #f8f7f5;                    /* Page Body Background: Warm Off-White */
+  --color-surface: #ffffff;                       /* Surface/Card Background: Pure White */
+  --color-surface-alt: #edecea;                   /* Alternative Surface: Warm Earthy Gray */
+  --color-border: #d8d6d2;                        /* Borders & Dividers: Warm Border Gray */
+  --color-text: #1e1c19;                          /* Primary Text: Earthy Black */
+  --color-text-muted: #7a766f;                    /* Muted Text: Warm Muted Gray */
+
+  /* ==========================================
+     3. TYPOGRAPHY (Fonts, Sizes & Line Heights)
+     ========================================== */
+  --font-sans: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+  --font-heading: "Fraunces", Georgia, serif;
+
+  /* Font Size & Line Height Scale combined */
+  --text-xs: 0.75rem;
+  --text-xs--line-height: 1.25rem;
+  
+  --text-sm: 0.875rem;
+  --text-sm--line-height: 1.5rem;
+  
+  --text-base: 1rem;
+  --text-base--line-height: 1.625rem;
+  
+  --text-lg: 1.125rem;
+  --text-lg--line-height: 1.75rem;
+  
+  --text-xl: 1.25rem;
+  --text-xl--line-height: 1.875rem;
+  
+  --text-2xl: 1.5rem;
+  --text-2xl--line-height: 2rem;
+  
+  --text-3xl: 1.875rem;
+  --text-3xl--line-height: 2.25rem;
+  
+  --text-4xl: 2.25rem;
+  --text-4xl--line-height: 2.75rem;
+  
+  --text-5xl: 3rem;
+  --text-5xl--line-height: 1.125;
+
+  /* Individual Line Height utilities */
+  --leading-none: 1;
+  --leading-tight: 1.25;
+  --leading-snug: 1.375;
+  --leading-normal: 1.5;
+  --leading-relaxed: 1.625;
+  --leading-loose: 2;
+
+  /* ==========================================
+     4. SPACING (Section, Container & Components)
+     ========================================== */
+  /* Section Spacing: For layout sections padding/margin */
+  --spacing-section-sm: 3rem;                     /* 48px */
+  --spacing-section-md: 5rem;                     /* 80px */
+  --spacing-section-lg: 8rem;                     /* 128px */
+
+  /* Container Spacing: Edge paddings for page layout shells */
+  --spacing-container-px: 1.5rem;                 /* 24px per style guide */
+  --spacing-container-py: 2.5rem;                 /* 40px */
+
+  /* Component Spacing: Inner paddings & gaps for cards/buttons/lists */
+  --spacing-component-xs: 0.5rem;                 /* 8px */
+  --spacing-component-sm: 1rem;                   /* 16px */
+  --spacing-component-md: 1.5rem;                 /* 24px */
+  --spacing-component-lg: 2rem;                   /* 32px */
+
+  /* ==========================================
+     5. BORDER RADIUS (Rounded Corners)
+     ========================================== */
+  --radius-small: 4px;                            /* 4px: Input fields, badges */
+  --radius-medium: 8px;                           /* 8px: Buttons, default cards */
+  --radius-large: 12px;                           /* 12px: Cards, panels */
+  --radius-xlarge: 16px;                          /* 16px: Large boxes */
+  --radius-2xlarge: 24px;                         /* 24px: Hero banner rounds */
+  --radius-pill: 9999px;                          /* Rounded pill: Badges, search bars */
+
+  /* ==========================================
+     6. SHADOWS (Elevation & Depth)
+     ========================================== */
+  --shadow-sm: 0 1px 3px rgba(30, 28, 25, 0.06), 0 1px 2px rgba(30, 28, 25, 0.04);
+  --shadow-md: 0 4px 12px rgba(30, 28, 25, 0.08), 0 1px 3px rgba(30, 28, 25, 0.05);
+  --shadow-lg: 0 8px 24px rgba(30, 28, 25, 0.1), 0 2px 8px rgba(30, 28, 25, 0.06);
+  --shadow-xl: 0 20px 40px rgba(30, 28, 25, 0.12), 0 8px 16px rgba(30, 28, 25, 0.07);
+
+  /* ==========================================
+     7. CONTAINER WIDTHS (Layout Shell Max-Widths)
+     ========================================== */
+  /* Prefixed with --container- to auto-generate .container breakpoints */
+  --container-narrow: 48rem;                      /* 768px: Article readings */
+  --container-default: 75rem;                     /* 1200px: Standard page grids (Style guide max) */
+  --container-wide: 90rem;                        /* 1440px: Mega nav, wide sections */
+  --container-full: 100%;                         /* Full viewport screen widths */
+
+  /* Prefixed with --spacing- to generate max-w-container-*, w-container-* and spacing classes in Tailwind v4 */
+  --spacing-container-narrow: 48rem;
+  --spacing-container-default: 75rem;
+  --spacing-container-wide: 90rem;
+  --spacing-container-full: 100%;
+}
+

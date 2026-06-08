@@ -1,0 +1,116 @@
+/* Custom component styles using @apply composition rules */
+.btn {
+  @apply inline-flex items-center justify-center font-medium font-sans transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2;
+}
+
+.btn-primary {
+  @apply px-6 py-3 border border-transparent text-base rounded-medium text-white bg-primary hover:bg-primary-hover focus:ring-primary;
+}
+
+.btn-secondary {
+  @apply px-6 py-3 border border-transparent text-base rounded-medium text-white bg-secondary hover:bg-secondary-hover focus:ring-secondary;
+}
+
+.btn-outline {
+  @apply px-6 py-3 border border-border text-base rounded-medium text-text hover:bg-surface-alt focus:ring-primary;
+}
+
+.btn-danger {
+  @apply px-6 py-3 border border-transparent text-base rounded-medium text-white bg-danger hover:opacity-90 focus:ring-danger;
+}
+
+.btn-text {
+  @apply text-primary hover:text-primary-hover focus:ring-primary p-0 bg-transparent;
+}
+
+.btn-sm {
+  @apply px-4 py-2 text-xs rounded-small;
+}
+
+.btn-md {
+  @apply px-6 py-3 text-base rounded-medium;
+}
+
+.btn-lg {
+  @apply px-8 py-4 text-lg rounded-large;
+}
+
+/* Form inputs styling for visibility & premium feel */
+input[type="text"],
+input[type="tel"],
+input[type="email"],
+input[type="number"],
+select,
+textarea {
+  border: 1px solid var(--color-border) !important;
+  background-color: var(--color-surface) !important;
+  transition: all 0.2s ease;
+}
+
+input[type="text"]:focus,
+input[type="tel"]:focus,
+input[type="email"]:focus,
+input[type="number"]:focus,
+select:focus,
+textarea:focus {
+  border-color: var(--color-primary) !important;
+  box-shadow: 0 0 0 3px rgba(30, 143, 85, 0.15) !important;
+}
+
+/* Highlight invalid fields on failed form submit */
+.was-validated input:invalid,
+.was-validated select:invalid,
+.was-validated textarea:invalid {
+  border-color: var(--color-danger) !important;
+  background-color: rgba(181, 99, 8, 0.03) !important;
+}
+
+.was-validated input:invalid:focus,
+.was-validated select:invalid:focus,
+.was-validated textarea:invalid:focus {
+  box-shadow: 0 0 0 3px rgba(181, 99, 8, 0.15) !important;
+}
+
+/* Styling overrides for intl-tel-input container to span full width */
+.iti {
+  display: block !important;
+  width: 100% !important;
+}
+
+/* Adjust inside styling for intl-tel-input dropdown */
+.iti__country-list {
+  z-index: 100 !important;
+  border-radius: 8px !important;
+  box-shadow: var(--shadow-lg) !important;
+  border: 1px solid var(--color-border) !important;
+  font-family: var(--font-sans) !important;
+  font-size: 13px !important;
+}
+
+.iti__selected-country {
+  padding: 0 10px 0 12px !important;
+}
+
+/* Quantity Selector Component styles */
+.qty-selector {
+  @apply inline-flex items-center border border-border/80 rounded-medium bg-white shadow-xs p-1 gap-1;
+}
+
+.qty-selector-btn {
+  @apply w-8 h-8 flex items-center justify-center hover:bg-surface-alt rounded-small transition-colors text-text-muted hover:text-primary focus:outline-none cursor-pointer font-bold text-sm;
+}
+
+.qty-selector-input {
+  @apply w-9 text-center font-bold text-xs text-secondary focus:outline-none bg-transparent border-0 p-0;
+  appearance: textfield;
+}
+
+.qty-selector-input::-webkit-outer-spin-button,
+.qty-selector-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.qty-selector-text {
+  @apply px-2 font-black text-sm text-secondary select-none;
+}

@@ -1,0 +1,4 @@
+/* Custom utility classes using @utility directive */
+@utility text-glow {
+  text-shadow: 0 0 10px rgba(var(--color-primary-500), 0.3);
+}
