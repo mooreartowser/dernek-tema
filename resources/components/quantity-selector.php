@@ -36,7 +36,7 @@ $btn_classes = implode( ' ', array_filter( [
             <?php if ( $is_ajax ) : ?>
                 data-line-key="<?php echo esc_attr( $line_key ); ?>" 
             <?php endif; ?>>
-        <i class="ri-minus-line text-xs"></i>
+        <i class="ri-subtract-line text-xs"></i>
     </button>
     
     <?php if ( $is_ajax ) : ?>

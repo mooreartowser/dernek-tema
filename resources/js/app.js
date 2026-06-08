@@ -6,10 +6,10 @@ document.addEventListener('DOMContentLoaded', () => {
     function escapeHtml(str) {
         if (!str) return '';
         return str.replace(/&/g, '&amp;')
-                  .replace(/</g, '&lt;')
-                  .replace(/>/g, '&gt;')
-                  .replace(/"/g, '&quot;')
-                  .replace(/'/g, '&#039;');
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;')
+            .replace(/'/g, '&#039;');
     }
 
     function formatCurrency(num) {
@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             <div class="flex items-center gap-2 mt-1">
                                 <div class="qty-selector scale-90 origin-left" data-quantity-selector>
                                     <button type="button" class="qty-selector-btn cart-qty-btn" data-line-key="${item.lineKey}" data-action="decrease">
-                                        <i class="ri-minus-line text-xs"></i>
+                                        <i class="ri-subtract-line text-xs"></i>
                                     </button>
                                     <span class="qty-selector-text" id="qty-text-${item.lineKey}">
                                         ${item.quantity}
@@ -97,7 +97,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Bind dynamic delete events
             container.querySelectorAll('.cart-item-remove').forEach(btn => {
-                btn.addEventListener('click', function(e) {
+                btn.addEventListener('click', function (e) {
                     e.preventDefault();
                     const lineKey = this.getAttribute('data-line-key');
                     removeCartItem(lineKey);
@@ -106,7 +106,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Bind dynamic quantity change events
             container.querySelectorAll('.cart-qty-btn').forEach(btn => {
-                btn.addEventListener('click', function(e) {
+                btn.addEventListener('click', function (e) {
                     e.preventDefault();
                     const lineKey = this.getAttribute('data-line-key');
                     const action = this.getAttribute('data-action');
@@ -254,7 +254,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Bind initial cart item remove buttons on load
     document.querySelectorAll('.cart-item-remove').forEach(btn => {
-        btn.addEventListener('click', function(e) {
+        btn.addEventListener('click', function (e) {
             e.preventDefault();
             const lineKey = this.getAttribute('data-line-key');
             removeCartItem(lineKey);
@@ -263,7 +263,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Bind initial cart item quantity change buttons on load
     document.querySelectorAll('.cart-qty-btn').forEach(btn => {
-        btn.addEventListener('click', function(e) {
+        btn.addEventListener('click', function (e) {
             e.preventDefault();
             const lineKey = this.getAttribute('data-line-key');
             const action = this.getAttribute('data-action');
@@ -272,7 +272,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     if (clearCartBtn) {
-        clearCartBtn.addEventListener('click', function(e) {
+        clearCartBtn.addEventListener('click', function (e) {
             e.preventDefault();
             clearCart();
         });
@@ -281,9 +281,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // Intercept all donation card submissions
     const donationForms = document.querySelectorAll('.donation-form');
     donationForms.forEach(form => {
-        form.addEventListener('submit', async function(e) {
+        form.addEventListener('submit', async function (e) {
             e.preventDefault();
-            
+
             const priceInput = form.querySelector('.price-input');
             if (priceInput && !priceInput.readOnly && priceInput.type === 'number') {
                 const amt = parseInt(priceInput.value || 0);
@@ -313,7 +313,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         const cartData = await cartResponse.json();
                         renderCartItems(cartData.items || []);
                         openCartDrawer();
-                        
+
                         const qtyInput = form.querySelector('input[name="quantity"]');
                         if (qtyInput) qtyInput.value = 1;
                     }
@@ -380,7 +380,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const phoneInput = document.getElementById('login-phone');
     const backBtn = document.getElementById('otp-back-btn');
     const logoutBtn = document.getElementById('header-logout-btn');
-    
+
     let activePhone = '';
     let timerInterval = null;
 
@@ -396,16 +396,16 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         // Dynamic mask based on country placeholder format & automatically add country code
-        phoneInput.addEventListener('input', function() {
+        phoneInput.addEventListener('input', function () {
             let cursor = phoneInput.selectionStart;
             let originalLen = phoneInput.value.length;
             let val = phoneInput.value;
-            
+
             if (!val.startsWith('+')) {
                 let digits = val.replace(/\D/g, '');
                 val = digits ? '+' + digits : '';
             }
-            
+
             let digits = val.replace(/\D/g, '');
             if (typeof intlTelInputUtils !== 'undefined' && digits.length > 0) {
                 let formatted = intlTelInputUtils.formatNumber('+' + digits, loginIti.getSelectedCountryData().iso2, intlTelInputUtils.numberFormat.INTERNATIONAL);
@@ -417,21 +417,21 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        phoneInput.addEventListener('focus', function() {
+        phoneInput.addEventListener('focus', function () {
             if (phoneInput.value.trim() === '') {
                 const dial = '+' + loginIti.getSelectedCountryData().dialCode;
                 phoneInput.value = dial + ' ';
             }
         });
 
-        phoneInput.addEventListener('blur', function() {
+        phoneInput.addEventListener('blur', function () {
             const dial = '+' + loginIti.getSelectedCountryData().dialCode;
             if (phoneInput.value.trim() === dial || phoneInput.value.trim() === '+' || phoneInput.value.trim() === '') {
                 phoneInput.value = '';
             }
         });
 
-        phoneInput.addEventListener('countrychange', function() {
+        phoneInput.addEventListener('countrychange', function () {
             const dial = '+' + loginIti.getSelectedCountryData().dialCode;
             phoneInput.value = dial + ' ';
         });
@@ -522,10 +522,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if (sendForm) {
-        sendForm.addEventListener('submit', async function(e) {
+        sendForm.addEventListener('submit', async function (e) {
             e.preventDefault();
             if (alertBox) alertBox.classList.add('hidden');
-            
+
             if (loginIti) {
                 if (!loginIti.isValidNumber()) {
                     showAlert('Lütfen geçerli bir telefon numarası girin.', 'error');
@@ -573,10 +573,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if (verifyForm) {
-        verifyForm.addEventListener('submit', async function(e) {
+        verifyForm.addEventListener('submit', async function (e) {
             e.preventDefault();
             if (alertBox) alertBox.classList.add('hidden');
-            
+
             const otpInput = document.getElementById('login-otp');
             const otp = otpInput.value.trim();
             if (otp.length !== 6) {
@@ -627,7 +627,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if (logoutBtn) {
-        logoutBtn.addEventListener('click', async function(e) {
+        logoutBtn.addEventListener('click', async function (e) {
             e.preventDefault();
             try {
                 const response = await fetch('/wp-admin/admin-ajax.php?action=peta_logout', {
@@ -652,14 +652,14 @@ document.addEventListener('DOMContentLoaded', () => {
             const priceInput = form.querySelector('.price-input');
             const unitAmountInput = form.querySelector('.unit-amount-hidden');
             const qtyInput = form.querySelector('input[name="quantity"]');
-            
+
             if (!priceInput || !unitAmountInput || !qtyInput) return;
 
             function updateDisplayPrice() {
                 const unitPrice = parseFloat(unitAmountInput.value || 0);
                 const qty = parseInt(qtyInput.value || 1);
                 const total = unitPrice * qty;
-                
+
                 if (priceInput.readOnly) {
                     priceInput.value = new Intl.NumberFormat('tr-TR').format(total);
                 } else {
@@ -668,7 +668,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             if (select) {
-                select.addEventListener('change', function() {
+                select.addEventListener('change', function () {
                     const selectedOpt = select.options[select.selectedIndex];
                     const price = parseFloat(selectedOpt.getAttribute('data-price') || 0);
                     if (price <= 0) {
@@ -690,7 +690,7 @@ document.addEventListener('DOMContentLoaded', () => {
             qtyInput.addEventListener('input', updateDisplayPrice);
 
             if (!priceInput.readOnly) {
-                priceInput.addEventListener('input', function() {
+                priceInput.addEventListener('input', function () {
                     const total = parseFloat(priceInput.value || 0);
                     const qty = parseInt(qtyInput.value || 1);
                     const unitPrice = total / qty;

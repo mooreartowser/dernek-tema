@@ -92,35 +92,15 @@ ob_start();
             $p_image = get_the_post_thumbnail_url( $p_id, 'medium' ) ?: get_template_directory_uri() . '/assets/demo/demo_waterwell.jpg';
             $p_excerpt = get_the_excerpt( $p_id ) ?: 'Bu proje hakkında detaylı açıklamalar ve raporlar çok yakında eklenecektir.';
             
-            // ACF CRM code or mock progress
-            $collected = get_field( 'collected_amount', $p_id ) ?: 45000;
-            $target = get_field( 'target_amount', $p_id ) ?: 60000;
-            $percentage = min( 100, round( ( $collected / $target ) * 100 ) );
-            
-            // Format output
+            // Output card footer with a large project detail button
             ob_start();
-            ?>
-            <div class="w-full flex flex-col gap-component-xs mt-component-xs">
-                <div class="flex justify-between text-xs font-semibold font-sans">
-                    <span class="text-primary"><?php echo number_format($collected, 0, ',', '.'); ?> TL</span>
-                    <span class="text-text-muted">Hedef: <?php echo number_format($target, 0, ',', '.'); ?> TL</span>
-                </div>
-                <div class="w-full bg-surface-alt rounded-pill h-2 overflow-hidden border border-border">
-                    <div class="bg-primary h-full rounded-pill transition-all duration-300" style="width: <?php echo esc_attr( $percentage ); ?>%"></div>
-                </div>
-                <div class="flex justify-between items-center text-xs font-sans mt-component-xs">
-                    <span class="text-text-muted">%<?php echo esc_html( $percentage ); ?> Tamamlandı</span>
-                    <?php
-                    get_template_part( 'resources/components/button', null, [
-                        'variant' => 'primary',
-                        'size' => 'small',
-                        'text' => 'Bağış Yap',
-                        'url' => $p_url
-                    ] );
-                    ?>
-                </div>
-            </div>
-            <?php
+            get_template_part( 'resources/components/button', null, [
+                'variant' => 'primary',
+                'size'    => 'large',
+                'text'    => __( 'Projeyi İncele', 'dernek-tema' ),
+                'url'     => $p_url,
+                'class'   => 'w-full justify-center text-center flex'
+            ] );
             $card_footer = ob_get_clean();
 
             get_template_part( 'resources/components/card', null, [
@@ -139,27 +119,13 @@ ob_start();
         // Mock project 1
         ob_start();
         ?>
-        <div class="w-full flex flex-col gap-component-xs mt-component-xs">
-            <div class="flex justify-between text-xs font-semibold font-sans">
-                <span class="text-primary">30.000 TL</span>
-                <span class="text-text-muted">Hedef: 50.000 TL</span>
-            </div>
-            <div class="w-full bg-surface-alt rounded-pill h-2 overflow-hidden border border-border">
-                <div class="bg-primary h-full rounded-pill" style="width: 60%"></div>
-            </div>
-            <div class="flex justify-between items-center text-xs font-sans mt-component-xs">
-                <span class="text-text-muted">%60 Tamamlandı</span>
-                <?php
-                get_template_part( 'resources/components/button', null, [
-                    'variant' => 'primary',
-                    'size' => 'small',
-                    'text' => 'Bağış Yap',
-                    'url' => '#'
-                ] );
-                ?>
-            </div>
-        </div>
-        <?php
+        get_template_part( 'resources/components/button', null, [
+            'variant' => 'primary',
+            'size'    => 'large',
+            'text'    => __( 'Projeyi İncele', 'dernek-tema' ),
+            'url'     => '#',
+            'class'   => 'w-full justify-center text-center flex'
+        ] );
         $mock_footer1 = ob_get_clean();
 
         get_template_part( 'resources/components/card', null, [
@@ -174,27 +140,13 @@ ob_start();
         // Mock project 2
         ob_start();
         ?>
-        <div class="w-full flex flex-col gap-component-xs mt-component-xs">
-            <div class="flex justify-between text-xs font-semibold font-sans">
-                <span class="text-primary">75.000 TL</span>
-                <span class="text-text-muted">Hedef: 100.000 TL</span>
-            </div>
-            <div class="w-full bg-surface-alt rounded-pill h-2 overflow-hidden border border-border">
-                <div class="bg-primary h-full rounded-pill" style="width: 75%"></div>
-            </div>
-            <div class="flex justify-between items-center text-xs font-sans mt-component-xs">
-                <span class="text-text-muted">%75 Tamamlandı</span>
-                <?php
-                get_template_part( 'resources/components/button', null, [
-                    'variant' => 'primary',
-                    'size' => 'small',
-                    'text' => 'Bağış Yap',
-                    'url' => '#'
-                ] );
-                ?>
-            </div>
-        </div>
-        <?php
+        get_template_part( 'resources/components/button', null, [
+            'variant' => 'primary',
+            'size'    => 'large',
+            'text'    => __( 'Projeyi İncele', 'dernek-tema' ),
+            'url'     => '#',
+            'class'   => 'w-full justify-center text-center flex'
+        ] );
         $mock_footer2 = ob_get_clean();
 
         get_template_part( 'resources/components/card', null, [
@@ -209,27 +161,13 @@ ob_start();
         // Mock project 3
         ob_start();
         ?>
-        <div class="w-full flex flex-col gap-component-xs mt-component-xs">
-            <div class="flex justify-between text-xs font-semibold font-sans">
-                <span class="text-primary">12.000 TL</span>
-                <span class="text-text-muted">Hedef: 15.000 TL</span>
-            </div>
-            <div class="w-full bg-surface-alt rounded-pill h-2 overflow-hidden border border-border">
-                <div class="bg-primary h-full rounded-pill" style="width: 80%"></div>
-            </div>
-            <div class="flex justify-between items-center text-xs font-sans mt-component-xs">
-                <span class="text-text-muted">%80 Tamamlandı</span>
-                <?php
-                get_template_part( 'resources/components/button', null, [
-                    'variant' => 'primary',
-                    'size' => 'small',
-                    'text' => 'Bağış Yap',
-                    'url' => '#'
-                ] );
-                ?>
-            </div>
-        </div>
-        <?php
+        get_template_part( 'resources/components/button', null, [
+            'variant' => 'primary',
+            'size'    => 'large',
+            'text'    => __( 'Projeyi İncele', 'dernek-tema' ),
+            'url'     => '#',
+            'class'   => 'w-full justify-center text-center flex'
+        ] );
         $mock_footer3 = ob_get_clean();
 
         get_template_part( 'resources/components/card', null, [
